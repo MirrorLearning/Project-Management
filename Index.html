@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Skills Assessment</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .instructions {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+        }
+        .question {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fafbfc;
+        }
+        .question h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .options {
+            margin-top: 15px;
+        }
+        .option {
+            margin-bottom: 12px;
+            padding: 12px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .option:hover {
+            border-color: #3498db;
+            background: #f8f9fa;
+        }
+        .option.selected {
+            border-color: #3498db;
+            background: #e8f4f8;
+        }
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .submit-btn {
+            background: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            transition: background 0.2s;
+        }
+        .submit-btn:hover {
+            background: #2980b9;
+        }
+        .submit-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+        .results {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: #d5edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+        }
+        .skill-result {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .skill-bar {
+            width: 60%;
+            height: 20px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .skill-fill {
+            height: 100%;
+            background: #3498db;
+            transition: width 0.5s ease;
+            border-radius: 10px;
+        }
+        .error {
+            color: #e74c3c;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Project Management Skills Assessment</h1>
+        
+        <div class="instructions">
+            <strong>Instructions:</strong> For each scenario, choose the ONE option that best describes what you would naturally focus on first or prioritise. There are no right or wrong answers - this will help identify your natural project management strengths.
+        </div>
+
+        <form id="assessmentForm">
+            <!-- Question 1 -->
+            <div class="question">
+                <h3>1. You've been asked to help with a project. What would you naturally prioritise?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q1" value="scoping" id="q1_b">
+                        <label for="q1_b">Defining exactly what the project should deliver and setting clear boundaries</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q1" value="delivery" id="q1_e">
+                        <label for="q1_e">Setting up reporting systems to track progress and quality</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q1" value="stakeholder" id="q1_a">
+                        <label for="q1_a">Meeting with stakeholders to understand their expectations and build relationships</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q1" value="risk" id="q1_d">
+                        <label for="q1_d">Identifying what could go wrong and planning how to prevent it</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q1" value="planning" id="q1_c">
+                        <label for="q1_c">Creating a detailed project plan with timelines and milestones</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question">
+                <h3>2. A colleague asks for your help with a struggling project. What's your first instinct?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q2" value="planning" id="q2_c">
+                        <label for="q2_c">Look at the timeline and resource allocation to see if it's realistic</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q2" value="stakeholder" id="q2_a">
+                        <label for="q2_a">Find out who the key people are and what they really need from this project</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q2" value="delivery" id="q2_e">
+                        <label for="q2_e">Review what's been delivered so far and assess the quality</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q2" value="risk" id="q2_d">
+                        <label for="q2_d">Identify the biggest risks and issues that need addressing</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q2" value="scoping" id="q2_b">
+                        <label for="q2_b">Check whether everyone's clear on what they're actually trying to achieve</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question">
+                <h3>3. Your manager wants you to take on additional responsibilities in project work. Which would you feel most confident about?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q3" value="risk" id="q3_d">
+                        <label for="q3_d">Anticipating problems before they happen and preparing contingencies</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q3" value="delivery" id="q3_e">
+                        <label for="q3_e">Keeping track of multiple work streams and ensuring quality standards</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q3" value="scoping" id="q3_b">
+                        <label for="q3_b">Taking a vague brief and turning it into clear, actionable requirements</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q3" value="stakeholder" id="q3_a">
+                        <label for="q3_a">Managing relationships with difficult or demanding stakeholders</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q3" value="planning" id="q3_c">
+                        <label for="q3_c">Breaking down complex work and creating realistic schedules</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question">
+                <h3>4. You're reviewing a project and notice several areas that need attention. Which type of issue would you naturally tackle first?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q4" value="delivery" id="q4_e">
+                        <label for="q4_e">Work is being completed but no one's checking if it meets requirements</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q4" value="scoping" id="q4_b">
+                        <label for="q4_b">No one seems clear on what success looks like for the project</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q4" value="stakeholder" id="q4_a">
+                        <label for="q4_a">Team members aren't communicating effectively or there's conflict</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q4" value="planning" id="q4_c">
+                        <label for="q4_c">The timeline looks unrealistic and tasks aren't properly sequenced</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q4" value="risk" id="q4_d">
+                        <label for="q4_d">There are obvious risks that no one seems to be acknowledging</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question">
+                <h3>5. When a project starts to feel chaotic or overwhelming, what's your instinct for getting it back on track?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q5" value="planning" id="q5_c">
+                        <label for="q5_c">Review the timeline and restructure the work more logically</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q5" value="stakeholder" id="q5_a">
+                        <label for="q5_a">Get everyone aligned on priorities</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q5" value="risk" id="q5_d">
+                        <label for="q5_d">Identify what's going wrong and address the biggest risks first</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q5" value="delivery" id="q5_e">
+                        <label for="q5_e">Focus on immediate deliverables and get some quick wins</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q5" value="scoping" id="q5_b">
+                        <label for="q5_b">Step back and clarify what we're actually trying to achieve</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question">
+                <h3>6. If you had to choose one strength to bring to any project team, it would be your ability to:</h3>
+                <div class="options">
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q6" value="delivery" id="q6_e">
+                        <label for="q6_e">Keep everything organised and ensure deliverables meet standards</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q6" value="risk" id="q6_d">
+                        <label for="q6_d">Spot potential problems early and prepare for them</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q6" value="stakeholder" id="q6_a">
+                        <label for="q6_a">Build consensus and get people working together effectively</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q6" value="scoping" id="q6_b">
+                        <label for="q6_b">Cut through ambiguity and establish clear objectives</label>
+                    </div>
+                    <div class="option" onclick="selectOption(this)">
+                        <input type="radio" name="q6" value="planning" id="q6_c">
+                        <label for="q6_c">Create realistic plans that people can actually follow</label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="calculateResults()">See My Results</button>
+            <div id="error-message" class="error"></div>
+        </form>
+
+        <div id="results" class="results">
+            <h2>Your Project Management Strengths</h2>
+            <p>Your results show your natural project management preferences ranked from strongest to weakest:</p>
+            <div id="skill-rankings"></div>
+            <p><strong>Interpretation:</strong> Your top-ranked skills represent your natural strengths in project management. Areas with lower scores may benefit from focused development, or you might prefer to partner with others who excel in those areas.</p>
+        </div>
+    </div>
+
+    <script>
+        function selectOption(element) {
+            // Remove selection from siblings
+            const siblings = element.parentNode.children;
+            for (let sibling of siblings) {
+                sibling.classList.remove('selected');
+            }
+            
+            // Add selection to clicked option
+            element.classList.add('selected');
+            
+            // Check the radio button
+            const radio = element.querySelector('input[type="radio"]');
+            radio.checked = true;
+        }
+
+        function calculateResults() {
+            const form = document.getElementById('assessmentForm');
+            const formData = new FormData(form);
+            const errorDiv = document.getElementById('error-message');
+            
+            // Check if all questions are answered
+            const questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6'];
+            for (let q of questions) {
+                if (!formData.get(q)) {
+                    errorDiv.textContent = 'Please answer all questions before viewing your results.';
+                    return;
+                }
+            }
+            
+            errorDiv.textContent = '';
+            
+            // Count scores for each skill
+            const scores = {
+                'stakeholder': 0,
+                'scoping': 0,
+                'planning': 0,
+                'risk': 0,
+                'delivery': 0
+            };
+            
+            questions.forEach(q => {
+                const answer = formData.get(q);
+                scores[answer]++;
+            });
+            
+            // Convert to array and sort
+            const sortedSkills = Object.entries(scores)
+                .map(([skill, score]) => ({
+                    name: getSkillName(skill),
+                    description: getSkillDescription(skill),
+                    score: score,
+                    percentage: (score / 6) * 100
+                }))
+                .sort((a, b) => b.score - a.score);
+            
+            // Display results
+            displayResults(sortedSkills);
+        }
+
+        function getSkillName(skill) {
+            const names = {
+                'stakeholder': 'Stakeholder Management',
+                'scoping': 'Scoping & Definition', 
+                'planning': 'Planning & Scheduling',
+                'risk': 'Risk & Issue Management',
+                'delivery': 'Delivery & Control'
+            };
+            return names[skill];
+        }
+
+        function getSkillDescription(skill) {
+            const descriptions = {
+                'stakeholder': 'Communication, engagement, influencing, conflict resolution',
+                'scoping': 'Clarifying requirements, setting boundaries, defining success',
+                'planning': 'Breaking down work, sequencing, estimating',
+                'risk': 'Spotting problems early, contingency thinking',
+                'delivery': 'Progress monitoring, resource coordination, quality assurance'
+            };
+            return descriptions[skill];
+        }
+
+        function displayResults(sortedSkills) {
+            const resultsDiv = document.getElementById('results');
+            const rankingsDiv = document.getElementById('skill-rankings');
+            
+            let html = '';
+            sortedSkills.forEach((skill, index) => {
+                const rank = index + 1;
+                const color = skill.score > 0 ? '#3498db' : '#ecf0f1';
+                
+                html += `
+                    <div class="skill-result">
+                        <div style="flex: 1;">
+                            <strong>${rank}. ${skill.name}</strong> (${skill.score}/6)<br>
+                            <small style="color: #666;">${skill.description}</small>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-fill" style="width: ${skill.percentage}%; background: ${color};"></div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            rankingsDiv.innerHTML = html;
+            resultsDiv.style.display = 'block';
+            
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
